@@ -24,7 +24,7 @@ class HomeLayout extends StatelessWidget {
             "News App",
           ),
         ),
-        body: ArticlesScreen(),
+        body: CategoriesSCreen(),
       ),
     );
   }

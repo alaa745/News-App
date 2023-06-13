@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:newsapp/model/category_model.dart';
+import 'package:newsapp/screens/articles/articles_arguments.dart';
+import 'package:newsapp/screens/articles/articles_screen.dart';
 
 import '../../shared/style/components/category_item.dart';
 
 class CategoriesSCreen extends StatelessWidget {
+  CategoriesSCreen();
+
   List<CategoryModel> categories = [
     CategoryModel(
       title: "Sports",
@@ -64,8 +68,17 @@ class CategoriesSCreen extends StatelessWidget {
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20),
               itemBuilder: (context, index) {
-                return CategoryItem(
-                    categoryModel: categories[index], index: index);
+                return InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      ArticlesScreen.routeName,
+                      arguments: ArticlesArguments(categories[index].title),
+                    );
+                  },
+                  child: CategoryItem(
+                      categoryModel: categories[index], index: index),
+                );
               },
               itemCount: categories.length,
             ),
