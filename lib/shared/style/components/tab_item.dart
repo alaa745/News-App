@@ -3,12 +3,13 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:newsapp/api/model/sources_response/source.dart';
 
 class TabItem extends StatelessWidget {
   bool selceted;
-  String sourceTitle;
+  Source? source;
 
-  TabItem({required this.selceted, required this.sourceTitle});
+  TabItem({required this.selceted, required this.source});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class TabItem extends StatelessWidget {
         border: Border.all(color: Theme.of(context).primaryColor, width: 2),
       ),
       child: Text(
-        sourceTitle,
+        source?.name ?? "",
         style: TextStyle(
             fontSize: 15,
             color: selceted ? Colors.white : Theme.of(context).primaryColor),

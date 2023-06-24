@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:newsapp/model/category_model.dart';
 import 'package:newsapp/screens/articles/articles_arguments.dart';
 import 'package:newsapp/screens/articles/articles_screen.dart';
+import 'package:newsapp/screens/home_news_fragment/home_news_fragment.dart';
 
 import '../../shared/style/components/category_item.dart';
 
@@ -17,7 +18,7 @@ class CategoriesSCreen extends StatelessWidget {
       color: Color(0xFFC91C22),
     ),
     CategoryModel(
-      title: "Politics",
+      title: "General",
       imagePath: "images/Politics.png",
       color: Color(0xFF003E90),
     ),
@@ -32,7 +33,7 @@ class CategoriesSCreen extends StatelessWidget {
       color: Color(0xFFCF7E48),
     ),
     CategoryModel(
-      title: "Environment",
+      title: "Entertainment",
       imagePath: "images/environment.png",
       color: Color(0xFF4882CF),
     ),
@@ -72,7 +73,7 @@ class CategoriesSCreen extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(
                       context,
-                      ArticlesScreen.routeName,
+                      HomeNewsFragment.routeName,
                       arguments: ArticlesArguments(categories[index].title),
                     );
                   },

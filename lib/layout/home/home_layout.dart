@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:newsapp/model/category_model.dart';
 import 'package:newsapp/screens/articles/articles_screen.dart';
 import 'package:newsapp/screens/categories/categories_screen.dart';
+import 'package:newsapp/screens/home_news_fragment/home_news_fragment.dart';
 import 'package:newsapp/shared/style/components/category_item.dart';
 
 class HomeLayout extends StatelessWidget {
