@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:newsapp/api/model/sources_response/source.dart';
 import 'package:newsapp/screens/articles/articles_arguments.dart';
-import 'package:newsapp/shared/style/components/article_item.dart';
+import 'package:newsapp/shared/style/components/news_list.dart';
 import 'package:newsapp/shared/style/components/tab_item.dart';
 
 class ArticlesScreen extends StatefulWidget {
   static const String routeName = "Articels";
+  List<Source>? sources;
+  String categoryTitle;
+
+  ArticlesScreen({required this.sources, required this.categoryTitle});
   @override
   State<ArticlesScreen> createState() => _ArticlesScreenState();
 }
@@ -14,20 +19,10 @@ class ArticlesScreen extends StatefulWidget {
 class _ArticlesScreenState extends State<ArticlesScreen> {
   int selectedIndex = 0;
 
-  List<String> sources = [
-    "BBC News",
-    "ABC News",
-    "CBC News",
-    "CNN News",
-    "BEIN News",
-    "SKY News",
-    "ON News",
-  ];
-
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)!.settings.arguments as ArticlesArguments;
+    // final args =
+    // ModalRoute.of(context)!.settings.arguments as ArticlesArguments;
 
     return Container(
       decoration: const BoxDecoration(
@@ -39,11 +34,11 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
         drawer: Drawer(),
         appBar: AppBar(
           title: Text(
-            args.categoryTitle,
+            widget.categoryTitle,
           ),
         ),
         body: DefaultTabController(
-          length: sources.length,
+          length: widget.sources!.length,
           child: Padding(
             padding: const EdgeInsets.only(left: 8.0, top: 20),
             child: Column(
@@ -56,21 +51,18 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
                     selectedIndex = index;
                     setState(() {});
                   },
-                  tabs: sources
-                      .map(
-                        (source) => TabItem(
-                            selceted: selectedIndex == sources.indexOf(source),
-                            sourceTitle: source),
-                      )
-                      .toList(),
+                  tabs: widget.sources
+                          ?.map(
+                            (source) => TabItem(
+                                selceted: selectedIndex ==
+                                    widget.sources?.indexOf(source),
+                                source: source),
+                          )
+                          .toList() ??
+                      [],
                 ),
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return ArticleItem();
-                    },
-                  ),
+                  child: NewsList(widget.sources![selectedIndex]),
                 )
               ],
             ),

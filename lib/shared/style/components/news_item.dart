@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:newsapp/api/model/news_response/article.dart';
+import 'package:newsapp/api/model/sources_response/source.dart';
 
-class ArticleItem extends StatelessWidget {
+class NewsItem extends StatelessWidget {
+  Article? article;
+
+  NewsItem({required this.article});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,35 +20,35 @@ class ArticleItem extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 200,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("images/NewsTest.png"),
+                    image: NetworkImage(article?.urlToImage ?? ''),
                     fit: BoxFit.cover),
               ),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              "BBC NEWS",
-              style: TextStyle(
+            Text(
+              article!.source!.name!,
+              style: const TextStyle(
                 fontSize: 10,
                 color: Color(0xFF79828B),
               ),
             ),
-            const Text(
-              "Why are football's biggest clubs starting a new \ntournament?",
-              style: TextStyle(
+            Text(
+              article!.title!,
+              style: const TextStyle(
                 fontSize: 15,
                 color: Color(0xFF42505C),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
+              children: [
                 Text(
-                  "3 hours ago",
-                  style: TextStyle(
+                  article!.publishedAt!,
+                  style: const TextStyle(
                     fontSize: 15,
                     color: Color(0xFF79828B),
                   ),
