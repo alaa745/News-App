@@ -22,10 +22,12 @@ class HomeLayout extends StatelessWidget {
         drawer: Drawer(),
         appBar: AppBar(
           title: const Text(
-            "News App",
+            "News AppP",
           ),
         ),
-        body: CategoriesSCreen(),
+        body: Image(
+          image: AssetImage('assetName'),
+        ),
       ),
     );
   }
