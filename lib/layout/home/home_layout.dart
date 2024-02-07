@@ -15,8 +15,7 @@ class HomeLayout extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("images/background.jpg"),
-        ),
+            image: AssetImage("images/background.jpg"), fit: BoxFit.cover),
       ),
       child: Scaffold(
         drawer: Drawer(),

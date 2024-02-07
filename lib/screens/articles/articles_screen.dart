@@ -27,8 +27,7 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("images/background.jpg"),
-        ),
+            image: AssetImage("images/background.jpg"), fit: BoxFit.cover),
       ),
       child: Scaffold(
         drawer: Drawer(),
@@ -42,7 +41,7 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
           child: Padding(
             padding: const EdgeInsets.only(left: 8.0, top: 20),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TabBar(
                   isScrollable: true,
